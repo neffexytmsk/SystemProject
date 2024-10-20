@@ -45,16 +45,24 @@ namespace SystemProject
 
         public User Authenticate(string login, string pass)
         {
+            if (login == "admin" && pass == "admin")
+            {
+                if (!users.Any(u => u.Login == login))
+                {
+                    users.Add(new User { Login = login, Password = pass, Role = Role.Управляющий });
+                    SaveUsers();
+                }
+                return new User { Login = login, Password = pass, Role = Role.Управляющий };
+            }
             return users.FirstOrDefault(x => x.Login == login && x.Password == pass);
         }
-
-        public void RegisterUser(string fio,string login, string pass, Role role)
+        public void RegisterUser(string fio,string login, string pass)
         {
             
             if (users.Any(x => x.Login == login))
                 throw new Exception("Пользователь с таким логином уже существует.");
             int newId = users.Count > 0 ? users.Max(user => user.ID) + 1 : 1;
-            users.Add(new User {ID = newId, FIO = fio, Login = login, Password = pass, Role = role });
+            users.Add(new User {ID = newId, FIO = fio, Login = login, Password = pass, Role = Role.Сотрудник });
             
             SaveUsers();
         }

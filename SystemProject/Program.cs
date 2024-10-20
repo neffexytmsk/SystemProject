@@ -21,6 +21,7 @@ namespace SystemProject
                 Console.Write("Пароль: ");
                 string pass = Console.ReadLine();
 
+
                 var user = userList.Authenticate(login, pass);
                 if (user != null)
                 {
@@ -66,25 +67,16 @@ namespace SystemProject
                                 var loginUser = Console.ReadLine();
                                 Console.Write("Введите пароль: ");
                                 var password = Console.ReadLine();
-                                Console.Write("Выберите роль (Управляющий/Сотрудник): ");
-                                var roleInput = Console.ReadLine();
 
-                                if (Enum.TryParse<Role>(roleInput, true, out Role role))
-                                {
                                     try
                                     {
-                                        userList.RegisterUser(fio, loginUser, password, role);
+                                        userList.RegisterUser(fio, loginUser, password);
                                         Console.WriteLine("Пользователь зарегистрирован.");
                                     }
                                     catch (Exception ex)
                                     {
                                         Console.WriteLine(ex.Message);
                                     }
-                                }
-                                else
-                                {
-                                    Console.WriteLine("Некорректная роль.");
-                                }
                             }
                             else break;
                         }
