@@ -76,6 +76,7 @@ namespace SystemProject
                                     catch (Exception ex)
                                     {
                                         Console.WriteLine(ex.Message);
+                                    Console.WriteLine();
                                     }
                             }
                             else break;
