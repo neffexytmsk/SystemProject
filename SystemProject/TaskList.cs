@@ -63,10 +63,11 @@ namespace SystemProject
             {
                 task.Status = status;
                 SaveTasks();
+                Console.WriteLine("Статус задачи обновлен.");
             }
             else
             {
-                throw new Exception("Задача не найдена.");
+                Console.WriteLine("Задача не найдена");
             }
         }
     }

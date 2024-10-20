@@ -108,7 +108,6 @@ namespace SystemProject
                                     Console.Write("Введите новый статус (To do, In Progress, Done): ");
                                     var status = Console.ReadLine();
                                     taskList.UpdateTaskStatus(taskProjectID, status);
-                                    Console.WriteLine("Статус задачи обновлен.");
                                 }
                                 else
                                 {
